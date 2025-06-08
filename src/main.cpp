@@ -32,7 +32,7 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			if (NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACK_DROP) continue;
 			gameObject->setRotation(0);
 			gameObject->setFlipX(false);
-			gameObject->setFlipX(false);
+			gameObject->setFlipY(false);
 			indicatorSprite->setRotation(rotation);
 		}
 	}

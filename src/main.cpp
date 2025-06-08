@@ -31,8 +31,8 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			const auto gameObject = static_cast<GameObject*>(indicatorSprite->getParent());
 			if (NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACK_DROP) continue;
 			indicatorSprite->setRotation(rotation - gameObject->getRotation());
-			if (bool flipStatus = gameObject->isFlipX()) indicatorSprite->setFlipX(flipStatus);
-			if (bool flipStatus = gameObject->isFlipY()) indicatorSprite->setFlipY(flipStatus);
+			indicatorSprite->setFlipX(gameObject->isFlipX());
+			indicatorSprite->setFlipY(gameObject->isFlipY());
 		}
 	}
 };

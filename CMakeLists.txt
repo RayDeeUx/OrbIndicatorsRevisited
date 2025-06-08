@@ -8,12 +8,11 @@ else()
 endif()
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-project(ModName VERSION 1.0.0)
+project(OrbIndicatorsRevisited VERSION 1.0.0)
 
 # Set up the mod binary
 add_library(${PROJECT_NAME} SHARED
     src/main.cpp
-    # Add any extra C++ source files here
 )
 
 if (NOT DEFINED ENV{GEODE_SDK})

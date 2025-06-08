@@ -6,12 +6,12 @@
 		"ios": "2.2074",
 		"android": "2.2074"
 	},
-	"id": "raydeeux.modname",
-	"name": "ModName",
+	"id": "raydeeux.orbindicatorsrevisited",
+	"name": "OrbIndicatorsRevisited",
 	"version": "v1.0.0",
 	"developer": "RayDeeUx",
 	"description": "Mod description.",
-	"repository": "https://github.com/RayDeeUx/ModName",
+	"repository": "https://github.com/RayDeeUx/OrbIndicatorsRevisited",
 	"settings": {
 		"enabled": {
 			"name": "Enabled",
@@ -19,11 +19,6 @@
 			"type": "bool",
 			"default": true
 		}
-	},
-	"resources": {
-		"sprites": [
-			"resources/*.png"
-		]
 	},
 	"issues": {
 		"url": "https://discord.com/channels/911701438269386882/1205523212444639292",

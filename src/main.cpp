@@ -33,7 +33,6 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			indicatorSprite->setRotation(rotation - gameObject->getRotation());
 			if (bool flipStatus = gameObject->isFlipX()) indicatorSprite->setFlipX(!flipStatus);
 			if (bool flipStatus = gameObject->isFlipY()) indicatorSprite->setFlipY(!flipStatus);
-			indicatorSprite->setRotation(rotation);
 		}
 	}
 };

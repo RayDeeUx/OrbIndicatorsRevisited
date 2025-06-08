@@ -3,9 +3,9 @@ Hey, RobTop.
 
 Remember how orb indicators still don't rotate correctly when the player changed directions from the arrow trigger? 
 
-***HEY, ROBTOP, I'M TALKING TO __<u>YOU</u>!__***
+***HEY, ROBTOP, I'M TALKING TO __YOU!__***
 
-Of course __<u>you</u>__ of all people would forget to fix such a silly thing.
+Of course __you__ of all people would forget to fix such a silly thing.
 
 Well, thanks to your laziness, there isn't even a way to fix this properly for orbs that were horizontally or vertically flipped in the level editor without causing more problems than there were to begin with.
 

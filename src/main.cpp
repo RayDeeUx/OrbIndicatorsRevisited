@@ -14,12 +14,22 @@ bool enabled = false;
 class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 	void update(float dt) {
 		GJBaseGameLayer::update(dt);
-		if (!enabled || !m_orbIndicators || !m_indicatorSprites) return;
+		// i hate hooking ::update() as much as the next person
+		// but for some fucking reason rob decided to keep the orb indicator
+		// rotation logic inside a func call inside GJBGL::update()
+		// and the dedicated func for rotating the sprites is inlined on mac
+		// seeing as that func is already being called within update i might as well
+		// follow suit to preserve compat
+		if (!enabled || !m_orbIndicators || !m_indicatorSprites || !m_player1) return;
+		int rotation = 0;
+		if (m_player1->m_isSideways) rotation = m_player1->m_isUpsideDown ? 270 : 90;
+		else if (m_player1->m_isUpsideDown) rotation = 180;
 		for (const auto indicatorSprite : CCArrayExt<CCSprite*>(m_indicatorSprites)) {
 			if (!indicatorSprite->getParent()) continue;
 			const auto gameObject = static_cast<GameObject*>(indicatorSprite->getParent());
 			if (NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACK_DROP) continue;
 			indicatorSprite->setScale(4.f);
+			indicatorSprite->setRotation(rotation);
 		}
 	}
 };

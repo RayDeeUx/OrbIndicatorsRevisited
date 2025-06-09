@@ -17,13 +17,15 @@ bool enabled = false;
 class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 	void update(float dt) {
 		GJBaseGameLayer::update(dt);
-		// i hate hooking ::update() as much as the next person
-		// but for some fucking reason rob decided to keep the orb indicator
-		// rotation logic inside a func call inside GJBGL::update()
-		// and the dedicated func for rotating the sprites is inlined on mac
-		// seeing as that func is already being called within update i might as well
-		// follow suit to preserve compat
-
+		/*
+		i hate hooking GJBGL::update() as much as the next person, trust me.
+		but for some absurd reason, rob decided to keep the orb indicator
+		rotation logic inside a func call inside GJBGL::update(), and the
+		func for accessing the indicator sprites is inlined for macos ARM.
+		seeing as that func is already being called within GLBGL::update(),
+		i might as well follow along to preserve compat.
+		--raydeeux
+		*/
 		if (!enabled || !m_orbIndicators || !m_indicatorSprites || !m_player1) return;
 		int rotation = 0;
 		if (m_player1->m_isSideways) rotation = m_player1->m_isUpsideDown ? 270 : 90;
@@ -64,10 +66,7 @@ $execute {
 		
 		const CCSize originalSize = event->getSprite()->getContentSize();
 		const CCSize replacementSize = nwo5->getContentSize();
-		const float yRatio = originalSize.height / replacementSize.height;
-		const float xRatio = originalSize.width / replacementSize.width;
-		
-		nwo5->setScale(std::min(xRatio, yRatio));
+		nwo5->setScale(std::min(originalSize.width / replacementSize.width, originalSize.height / replacementSize.height));
 		event->getSprite()->addChildAtPosition(nwo5, Anchor::Center);
 		
 		return ListenerResult::Propagate;

@@ -57,8 +57,7 @@ $execute {
 		if (event->getSprite()->getChildByID(nwo5SpriteID)) return ListenerResult::Propagate;
 
 		std::srand(static_cast<unsigned int>(std::time(nullptr)));
-		const int randomNumber = 1 + std::rand() % (1000 - 1 + 1);
-		if (randomNumber != 500) return ListenerResult::Propagate;
+		if ((1 + std::rand() % 1000) != 500) return ListenerResult::Propagate;
 
 		CCSprite* nwo5 = CCSprite::create(nwo5LogoPath.string().c_str());
 		if (!nwo5) return ListenerResult::Propagate;

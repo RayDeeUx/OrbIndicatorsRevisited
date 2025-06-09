@@ -1,4 +1,6 @@
 #include <Geode/modify/GJBaseGameLayer.hpp>
+#include <random>
+#include <ctime>
 
 #define NOT_RED gameObject->m_objectType != GameObjectType::RedJumpRing
 #define NOT_PINK gameObject->m_objectType != GameObjectType::PinkJumpRing
@@ -39,5 +41,33 @@ $on_mod(Loaded) {
 	enabled = Mod::get()->getSettingValue<bool>("enabled");
 	listenForAllSettingChanges([](std::shared_ptr<SettingV3> _) {
 		enabled = Mod::get()->getSettingValue<bool>("enabled");
+	});
+}
+
+$execute {
+	new EventListener<EventFilter<ModLogoUIEvent>>(+[](ModLogoUIEvent* event) {
+		std::filesystem::path nwo5LogoPath = Mod::get()->getResourcesDir() / "nwo5.png";
+		if (event->getModID() != Mod::get()->getID() || !std::filesystem::exists(nwo5LogoPath)) return ListenerResult::Propagate;
+
+		std::string formattedSpriteID = fmt::format("{}-custom-logo"_spr, event->getModID());
+		if (event->getSprite()->getChildByID(formattedSpriteID)) return ListenerResult::Propagate;
+
+		// std::srand(static_cast<unsigned int>(std::time(nullptr)));
+		// const int randomNumber = 1 + std::rand() % (100 - 1 + 1);
+		// if (randomNumber != 50) return ListenerResult::Propagate;
+
+		CCSprite* nwo5 = CCSprite::create(nwo5LogoPath.string().c_str());
+		if (!nwo5) return ListenerResult::Propagate;
+		nwo5->setID(formattedSpriteID);
+		
+		const CCSize originalSize = event->getSprite()->getContentSize();
+		const CCSize replacementSize = nwo5->getContentSize();
+		const float yRatio = originalSize.height / replacementSize.height;
+		const float xRatio = originalSize.width / replacementSize.width;
+		
+		nwo5->setScale(std::min(xRatio, yRatio));
+		event->getSprite()->addChildAtPosition(nwo5, Anchor::Center);
+		
+		return ListenerResult::Propagate;
 	});
 }

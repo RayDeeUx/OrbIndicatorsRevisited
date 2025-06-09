@@ -49,7 +49,7 @@ $execute {
 	new EventListener<EventFilter<ModLogoUIEvent>>(+[](ModLogoUIEvent* event) {
 		std::filesystem::path nwo5LogoPath = Mod::get()->getResourcesDir() / "nwo5.png";
 		if (!event->getSprite() || event->getModID() != Mod::get()->getID() || !std::filesystem::exists(nwo5LogoPath)) return ListenerResult::Propagate;
-		if (event->getSprite()->getChildByID("raydeeux.custommodlogos/raydeeux.orbindicatorsrevisited-custom-logo"))
+		if (event->getSprite()->getChildByID("raydeeux.custommodlogos/raydeeux.orbindicatorsrevisited-custom-logo")) return ListenerResult::Propagate;
 
 		std::string nwo5SpriteID = "nwo5-logo"_spr;
 		if (event->getSprite()->getChildByID(nwo5SpriteID)) return ListenerResult::Propagate;

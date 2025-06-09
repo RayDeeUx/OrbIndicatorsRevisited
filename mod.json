@@ -27,9 +27,6 @@
 		}
 	},
 	"resources": {
-		"sprites": [
-			"resources/easterEgg/*.png"
-		],
 		"files": [
 			"resources/betterIndicators/*.png"
 		]

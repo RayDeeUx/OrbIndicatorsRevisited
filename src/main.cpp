@@ -1,7 +1,9 @@
 #include <Geode/modify/GJBaseGameLayer.hpp>
+/*
 #include <Geode/ui/GeodeUI.hpp>
 #include <random>
 #include <ctime>
+*/
 
 #define NOT_RED gameObject->m_objectType != GameObjectType::RedJumpRing
 #define NOT_PINK gameObject->m_objectType != GameObjectType::PinkJumpRing
@@ -57,6 +59,7 @@ $on_mod(Loaded) {
 	}
 }
 
+/*
 $execute {
 	new EventListener<EventFilter<ModLogoUIEvent>>(+[](ModLogoUIEvent* event) {
 		std::filesystem::path nwo5LogoPath = Mod::get()->getResourcesDir() / "nwo5.png";
@@ -81,3 +84,4 @@ $execute {
 		return ListenerResult::Propagate;
 	});
 }
+*/

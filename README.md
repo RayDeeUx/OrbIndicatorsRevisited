@@ -3,7 +3,7 @@ Hey, RobTop.
 
 Remember how orb indicators still don't rotate correctly when the player changed directions from the arrow trigger? 
 
-***HEY, ROBTOP, I'M TALKING TO __<u>YOU</u>!__***
+***HEY, ROBTOP, __<u>I'M TALKING TO YOU</u>!__***
 
 Of course __<u>you</u>__ of all people would forget to fix such a silly thing.
 

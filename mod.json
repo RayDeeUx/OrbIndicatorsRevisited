@@ -18,7 +18,18 @@
 			"description": "Toggles the mod.",
 			"type": "bool",
 			"default": true
+		},
+		"slightlyMoreHelpfulOrbIndicators": {
+			"name": "Better Green Orb + Black Orb Indicators (MAKE SURE TO READ!)",
+			"description": "<cp>***__RESTART REQUIRED. CHANGES FROM THIS SETTING (MAY OVERRIDE/BE OVERRIDDEN BY) CHANGES FROM ACTIVE TEXTURE PACKS.__***</c>\nUses slightly more descriptive orb indicators for green orbs and black orbs.",
+			"type": "bool",
+			"default": true
 		}
+	},
+	"resources": {
+		"files": [
+			"resources/betterIndicators/*.png"
+		]
 	},
 	"issues": {
 		"url": "https://discord.com/channels/911701438269386882/1205523212444639292",

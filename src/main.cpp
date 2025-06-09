@@ -48,6 +48,15 @@ $on_mod(Loaded) {
 	listenForAllSettingChanges([](std::shared_ptr<SettingV3> _) {
 		enabled = Mod::get()->getSettingValue<bool>("enabled");
 	});
+	if (Mod::get()->getSettingValue<bool>("slightlyMoreHelpfulOrbIndicators")) {
+		const std::string& resourcesDir = Mod::get()->getResourcesDir().string();
+		auto directoryVector = std::vector<std::string>{ resourcesDir };
+		const auto texturePack = CCTexturePack {
+			.m_id = Mod::get()->getID(), // they're the same ID so it doesnt matter
+			.m_paths = directoryVector
+		};
+		CCFileUtils::get()->addTexturePack(texturePack);
+	}
 }
 
 /*

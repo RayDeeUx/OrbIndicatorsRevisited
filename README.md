@@ -7,4 +7,4 @@ Fixes orb indicators to be more responsive to the player's gravitational directi
 
 Thanks to [altalk23](https://github.com/altalk23) and [Alphalaneous](https://github.com/Alphalaneous) for the assists!
 
-*This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2.*
+This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2.

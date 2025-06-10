@@ -48,6 +48,13 @@ $on_mod(Loaded) {
 	listenForAllSettingChanges([](std::shared_ptr<SettingV3> _) {
 		enabled = Mod::get()->getSettingValue<bool>("enabled");
 	});
+	/*
+	Oh, boo hoo! I'm loading ~5.4MB of textures just for one measly little toggle.
+	I'd like to see a better solution from you then, if you're worried so much about
+	these few lines of code. No one's complained when these lines were used in the
+	ChangeFont19 mod; cry me a river or make a pull request.
+	--raydeeux
+	*/
 	if (Mod::get()->getSettingValue<bool>("slightlyMoreHelpfulOrbIndicators")) {
 		const std::string& resourcesDir = Mod::get()->getResourcesDir().string();
 		auto directoryVector = std::vector<std::string>{ resourcesDir };

@@ -10,7 +10,7 @@
 #define NOT_YELLOW gameObject->m_objectType != GameObjectType::YellowJumpRing
 #define NOT_GRAVITY gameObject->m_objectType != GameObjectType::GravityRing
 #define NOT_GRAVJUMP gameObject->m_objectType != GameObjectType::GreenRing
-#define NOT_BLACK_DROP gameObject->m_objectType != GameObjectType::DropRing
+#define NOT_BLACKDROP gameObject->m_objectType != GameObjectType::DropRing
 
 using namespace geode::prelude;
 
@@ -36,7 +36,7 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 		for (const auto indicatorSprite : CCArrayExt<CCSprite*>(m_indicatorSprites)) {
 			if (!indicatorSprite->getParent()) continue;
 			const auto gameObject = static_cast<GameObject*>(indicatorSprite->getParent());
-			if (NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACK_DROP) continue;
+			if (NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACKDROP) continue;
 			indicatorSprite->setRotation(rotation - gameObject->getRotation());
 			if (gameObject->isFlipY() && !m_player1->m_isSideways || gameObject->isFlipX() && m_player1->m_isSideways) indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 		}

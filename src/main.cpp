@@ -11,12 +11,29 @@
 #define NOT_GRAVITY gameObject->m_objectType != GameObjectType::GravityRing
 #define NOT_GRAVJUMP gameObject->m_objectType != GameObjectType::GreenRing
 #define NOT_BLACKDROP gameObject->m_objectType != GameObjectType::DropRing
+#define NON_INDICATOR_ORB NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACKDROP
 
 using namespace geode::prelude;
 
 bool enabled = false;
 
 class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
+	// kam starts here
+	virtual void addToSection(GameObject* gameObject) {
+		GJBaseGameLayer::addToSection(gameObject);
+		if (!gameObject || !enabled || !m_orbIndicators || !m_indicatorSprites) return;
+		if (NON_INDICATOR_ORB) return;
+		(void) GJBaseGameLayer::addGuideArt(gameObject);
+	}
+	void removeObjectFromSection(GameObject* gameObject) {
+		const auto indicatorSprite = gameObject->getChildByType<CCSprite>(0);
+		if (!gameObject || !enabled || !m_orbIndicators || !m_indicatorSprites || !indicatorSprite) return GJBaseGameLayer::removeObjectFromSection(gameObject);
+		if (NON_INDICATOR_ORB) return GJBaseGameLayer::removeObjectFromSection(gameObject);
+		m_indicatorSprites->fastRemoveObject(indicatorSprite);
+		CC_SAFE_RELEASE(indicatorSprite);
+		GJBaseGameLayer::removeObjectFromSection(gameObject);
+	}
+	// kam ends here
 	void update(float dt) {
 		GJBaseGameLayer::update(dt);
 		/*
@@ -36,7 +53,7 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 		for (const auto indicatorSprite : CCArrayExt<CCSprite*>(m_indicatorSprites)) {
 			if (!indicatorSprite->getParent()) continue;
 			const auto gameObject = static_cast<GameObject*>(indicatorSprite->getParent());
-			if (NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACKDROP) continue;
+			if (NON_INDICATOR_ORB) continue;
 			indicatorSprite->setRotation(rotation - gameObject->getRotation());
 			if (gameObject->isFlipY() && !m_player1->m_isSideways || gameObject->isFlipX() && m_player1->m_isSideways) indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 		}
@@ -55,7 +72,7 @@ $on_mod(Loaded) {
 	ChangeFont19 mod; cry me a river or make a pull request.
 	--raydeeux
 	*/
-	if (Mod::get()->getSettingValue<bool>("slightlyMoreHelpfulOrbIndicators")) {
+	if (Mod::get()->getSettingValue<bool>("slightlyMoreHelpfulOrbIndicators") && enabled) {
 		const std::string& resourcesDir = Mod::get()->getResourcesDir().string();
 		auto directoryVector = std::vector<std::string>{ resourcesDir };
 		const auto texturePack = CCTexturePack {

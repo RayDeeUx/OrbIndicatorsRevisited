@@ -18,22 +18,6 @@ using namespace geode::prelude;
 bool enabled = false;
 
 class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
-	// kam starts here
-	virtual void addToSection(GameObject* gameObject) {
-		GJBaseGameLayer::addToSection(gameObject);
-		if (!gameObject || !enabled || !m_orbIndicators || !m_indicatorSprites) return;
-		if (NON_INDICATOR_ORB) return;
-		(void) GJBaseGameLayer::addGuideArt(gameObject);
-	}
-	void removeObjectFromSection(GameObject* gameObject) {
-		const auto indicatorSprite = gameObject->getChildByType<CCSprite>(0);
-		if (!gameObject || !enabled || !m_orbIndicators || !m_indicatorSprites || !indicatorSprite) return GJBaseGameLayer::removeObjectFromSection(gameObject);
-		if (NON_INDICATOR_ORB) return GJBaseGameLayer::removeObjectFromSection(gameObject);
-		m_indicatorSprites->fastRemoveObject(indicatorSprite);
-		CC_SAFE_RELEASE(indicatorSprite);
-		GJBaseGameLayer::removeObjectFromSection(gameObject);
-	}
-	// kam ends here
 	void update(float dt) {
 		GJBaseGameLayer::update(dt);
 		/*

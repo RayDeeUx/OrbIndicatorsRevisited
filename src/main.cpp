@@ -64,7 +64,8 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 			}
 
-			if ((flipY && !sideways) || (flipX && sideways)) indicatorSprite->setScale(4.f);
+			if (flipY && !sideways) indicatorSprite->setScale(4.f);
+			else if (flipX && sideways) indicatorSprite->setScale(2.f);
 		}
 	}
 };

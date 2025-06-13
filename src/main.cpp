@@ -30,16 +30,29 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 		--raydeeux
 		*/
 		if (!enabled || !m_orbIndicators || !m_indicatorSprites || !m_player1) return;
+
+		const bool sideways = m_player1->m_isSideways;
+		const bool flipped = m_player1->m_isUpsideDown;
+
 		int rotation = 0;
-		if (m_player1->m_isSideways) rotation = m_player1->m_isUpsideDown ? 270 : 90;
-		else if (m_player1->m_isUpsideDown) rotation = 180;
+		if (sideways) rotation = flipped ? 270 : 90;
+		else if (flipped) rotation = 180;
 
 		for (const auto indicatorSprite : CCArrayExt<CCSprite*>(m_indicatorSprites)) {
 			if (!indicatorSprite->getParent()) continue;
+
 			const auto gameObject = static_cast<GameObject*>(indicatorSprite->getParent());
 			if (NON_INDICATOR_ORB) continue;
-			indicatorSprite->setRotation(rotation - gameObject->getRotation());
-			if (gameObject->isFlipY() && !m_player1->m_isSideways || gameObject->isFlipX() && m_player1->m_isSideways) indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
+
+			const int gameObjectRotation = gameObject->getRotation();
+			indicatorSprite->setRotation(rotation - gameObjectRotation);
+			if (gameObjectRotation % 90 != 0) return;
+
+			const bool flipY = gameObject->isFlipY();
+			const bool flipX = gameObject->isFlipX();
+
+			if (((!flipY && !flipX) || (flipY && flipX)) && gameObjectRotation % 180 != 0) return indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
+			if (flipY && !sideways || flipX && sideways) indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 		}
 	}
 };

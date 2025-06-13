@@ -54,6 +54,7 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			const int gameObjectRotation = gameObject->getRotation();
 			if (gameObjectRotation > 0) indicatorSprite->setRotation(gameObjectRotation - rotation);
 			else if (gameObjectRotation < 0) indicatorSprite->setRotation(rotation - gameObjectRotation);
+			else indicatorSprite->setRotation(rotation);
 
 			const bool flipY = gameObject->isFlipY();
 			const bool flipX = gameObject->isFlipX();
@@ -66,11 +67,11 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			going to waste clock cycles so i'm just going to avoid
 			all of that noise and let the rare edge cases suffer! yay!!!
 			--raydeeux
-			*/
 			
 			if ((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) {
 				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 			}
+			*/
 		}
 	}
 };

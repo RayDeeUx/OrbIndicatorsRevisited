@@ -13,6 +13,13 @@
 #define NOT_BLACKDROP gameObject->m_objectType != GameObjectType::DropRing
 #define NON_INDICATOR_ORB NOT_RED && NOT_PINK && NOT_YELLOW && NOT_GRAVITY && NOT_GRAVJUMP && NOT_BLACKDROP
 
+#define RED gameObject->m_objectType == GameObjectType::RedJumpRing
+#define PINK gameObject->m_objectType == GameObjectType::PinkJumpRing
+#define YELLOW gameObject->m_objectType == GameObjectType::YellowJumpRing
+#define GRAVITY gameObject->m_objectType == GameObjectType::GravityRing
+#define GRAVJUMP gameObject->m_objectType == GameObjectType::GreenRing
+#define BLACKDROP gameObject->m_objectType == GameObjectType::DropRing
+
 using namespace geode::prelude;
 
 bool enabled = false;
@@ -63,9 +70,6 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			if ((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) {
 				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 			}
-
-			if (flipY && !sideways) indicatorSprite->setScale(4.f);
-			else if (flipX && sideways) indicatorSprite->setScale(2.f);
 		}
 	}
 };

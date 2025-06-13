@@ -47,8 +47,8 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			const int gameObjectRotation = gameObject->getRotation();
 			indicatorSprite->setRotation(rotation - gameObjectRotation);
 
-			const bool flipY = gameObject->isFlipY();
-			const bool flipX = gameObject->isFlipX();
+			const bool flipY = gameObject->getRScaleY();
+			const bool flipX = gameObject->getRScaleX();
 
 			/*
 			i'd check for gameObject rotation modulo 90,

@@ -52,7 +52,7 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			if (NON_INDICATOR_ORB) continue;
 
 			const int gameObjectRotation = gameObject->getRotation();
-			indicatorSprite->setRotation(rotation - gameObjectRotation);
+			if (gameObjectRotation % 180 != 0) indicatorSprite->setRotation(rotation - gameObjectRotation);
 
 			const bool flipY = gameObject->isFlipY();
 			const bool flipX = gameObject->isFlipX();

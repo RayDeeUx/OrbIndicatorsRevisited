@@ -67,11 +67,11 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			going to waste clock cycles so i'm just going to avoid
 			all of that noise and let the rare edge cases suffer! yay!!!
 			--raydeeux
+			*/
 			
 			if ((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) {
 				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 			}
-			*/
 		}
 	}
 };

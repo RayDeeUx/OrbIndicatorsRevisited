@@ -49,6 +49,16 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			const bool flipY = gameObject->isFlipY();
 			const bool flipX = gameObject->isFlipX();
 
+			/*
+			i'd check for gameObject rotation modulo 90,
+			but rotate triggers exist so that would cause
+			some flickering in orb indicators which i could
+			work around by checking for groups but that's just
+			going to waste clock cycles so i'm just going to avoid
+			all of that noise and let the rare edge cases suffer! yay!!!
+			--raydeeux
+			*/
+
 			if ((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) {
 				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 			}

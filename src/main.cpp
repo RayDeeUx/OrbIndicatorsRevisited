@@ -44,13 +44,12 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			const auto gameObject = static_cast<GameObject*>(indicatorSprite->getParent());
 			if (NON_INDICATOR_ORB) continue;
 
-			const int gameObjectRotation = gameObject->getRotation();
-			indicatorSprite->setRotation(rotation - gameObjectRotation);
+			indicatorSprite->setRotation(rotation - gameObject->getRotation());
 
 			const bool flipY = gameObject->isFlipY();
 			const bool flipX = gameObject->isFlipX();
 
-			if (((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) && (gameObjectRotation % 90 == 0)) {
+			if ((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) {
 				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 			}
 		}

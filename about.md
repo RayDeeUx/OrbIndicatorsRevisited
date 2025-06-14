@@ -3,7 +3,7 @@ Fixes orb indicators to be more responsive to the player's gravitational directi
 
 (Well, most of them.)
 
-*Mod author's note: Orb indicators will be pointing in the wrong direction when they belong to a horizontally or vertically flipped jump orb with custom rotation values. Trying to adjust the source code for these incredibly uncommon scenarios is not worth the effort, even if entropy and the heat death of the universe were physically impossible.*
+*Mod author's note: Orb indicators will point in the wrong direction when an orb is horizontally or vertically flipped with custom rotation values. Adjusting the source code for these incredibly uncommon scenarios is not worth the effort.*
 
 Thanks to [altalk23](https://github.com/altalk23) and [Alphalaneous](https://github.com/Alphalaneous) for the assists!
 

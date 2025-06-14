@@ -7,4 +7,4 @@ Thanks to [altalk23](https://github.com/altalk23) and [Alphalaneous](https://git
 
 This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2. To report bugs or get help with using my mods, press the Discord button in the lower left corner.
 
-*Disclaimer for [Mod Previews](mod:alphalaneous.mod_previews) users: preview screenshots below were taken using older builds of this mod; some visuals may have changed.*
+*Disclaimer for [Mod Previews](mod:alphalaneous.mod_previews) users: Preview screenshots below were taken using older builds of this mod; visuals have changed since then.*

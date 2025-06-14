@@ -1,5 +1,5 @@
 # OrbIndicatorsRevisited
-Fixes orb indicators to be more responsive to the player's gravitational direction.
+Fixes orb indicators to be more descriptive and more responsive to the player's gravitational direction.
 
 (Well, most of them. Orb indicators will point in the wrong direction if an orb is horizontally or vertically flipped with custom rotation values. These rare exceptions are not worth fixing.)
 

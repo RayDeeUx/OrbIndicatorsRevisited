@@ -51,6 +51,9 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			const auto gameObject = static_cast<GameObject*>(indicatorSprite->getParent());
 			if (NON_INDICATOR_ORB) continue;
 
+			indicatorSprite->setFlipY(false);
+			indicatorSprite->setFlipX(false);
+
 			const int gameObjectRotation = gameObject->getRotation();
 			indicatorSprite->setRotation(rotation - gameObjectRotation);
 
@@ -67,8 +70,14 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 			--raydeeux
 			*/
 			
-			if ((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) {
-				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
+			// if ((flipY && flipX) || (flipY && !sideways) || (flipX && sideways)) {
+			// 	indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
+			// }
+			if (flipY && !sideways) indicatorSprite->setFlipY(true);
+			else if (flipX && sideways) indicatorSprite->setFlipX(true);
+			else if (flipY && flipX) {
+				indicatorSprite->setFlipY(true);
+				indicatorSprite->setFlipX(true);
 			}
 		}
 	}

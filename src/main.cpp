@@ -24,6 +24,8 @@ using namespace geode::prelude;
 
 bool enabled = false;
 
+bool slightlyMoreHelpfulOrbIndicators = false;
+
 class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 	void update(float dt) {
 		GJBaseGameLayer::update(dt);
@@ -74,6 +76,8 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 				indicatorSprite->setRotation(indicatorSprite->getRotation() - 180);
 			}
 
+			if (!slightlyMoreHelpfulOrbIndicators) continue;
+
 			if (GRAVJUMP) indicatorSprite->setScale(1.05f);
 			if (BLACKDROP) indicatorSprite->setScale(1.8f);
 		}
@@ -92,7 +96,8 @@ $on_mod(Loaded) {
 	ChangeFont19 mod; cry me a river or make a pull request.
 	--raydeeux
 	*/
-	if (Mod::get()->getSettingValue<bool>("slightlyMoreHelpfulOrbIndicators") && enabled) {
+	slightlyMoreHelpfulOrbIndicators = Mod::get()->getSettingValue<bool>("slightlyMoreHelpfulOrbIndicators");
+	if (slightlyMoreHelpfulOrbIndicators && enabled) {
 		const std::string& resourcesDir = Mod::get()->getResourcesDir().string();
 		auto directoryVector = std::vector<std::string>{ resourcesDir };
 		const auto texturePack = CCTexturePack {

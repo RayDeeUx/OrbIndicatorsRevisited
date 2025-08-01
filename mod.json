@@ -19,11 +19,16 @@
 			"type": "bool",
 			"default": true
 		},
-		"slightlyMoreHelpfulOrbIndicators": {
-			"name": "Better Green Orb + Black Orb Indicators (MAKE SURE TO READ!)",
-			"description": "<cp>***__RESTART REQUIRED. CHANGES FROM THIS SETTING (MAY OVERRIDE/BE OVERRIDDEN BY) CHANGES FROM ACTIVE TEXTURE PACKS.__***</c>\nUses slightly more descriptive orb indicators for green orbs and black orbs.",
+		"slightlyMoreHelpfulOrbIndicatorsRESET": {
+			"name": "Better Green Orb + Black Orb Indicators (READ THE DESC PLEASE!)",
+			"description": "<cp>***__RESTART REQUIRED.</c>__***\n- ***__<c_>CHANGES FROM THIS SETTING MAY INADVERTENTLY OVERRIDE BLENDING OPTIONS FOR GRADIENT/GLOW OBEJCTS.</c>__***\n- ***__<cp>CHANGES FROM THIS SETTING MAY OVERRIDE, OR BE OVERRIDDEN BY CHANGES FROM LOADED TEXTURE PACKS.</c>__***\n\nUses slightly more descriptive orb indicators for green orbs and black orbs.",
 			"type": "bool",
-			"default": true
+			"default": {
+				"win": true,
+				"mac": true,
+				"ios": false,
+				"android": false
+			}
 		}
 	},
 	"resources": {

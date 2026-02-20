@@ -1,4 +1,6 @@
 # OrbIndicatorsRevisited Changelog
+## v1.0.2
+- Port to GD 2.2081.
 ## v1.0.1
 - Reset everyone's `Better Green Orb + Black Orb Indicators` toggles.
   - Leaving this enabled on Android devices breaks blending options for gradient objects (also known as the worst inventions in human history).

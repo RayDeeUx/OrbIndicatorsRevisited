@@ -94,7 +94,7 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
 
 $on_mod(Loaded) {
 	enabled = Mod::get()->getSettingValue<bool>("enabled");
-	listenForAllSettingChanges([](std::shared_ptr<SettingV3> _) {
+	listenForAllSettingChanges([](std::string_view, std::shared_ptr<SettingV3>) {
 		enabled = Mod::get()->getSettingValue<bool>("enabled");
 	});
 	/*

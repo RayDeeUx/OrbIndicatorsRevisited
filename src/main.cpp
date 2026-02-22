@@ -106,7 +106,7 @@ $on_mod(Loaded) {
 	*/
 	slightlyMoreHelpfulOrbIndicatorsRESET = Mod::get()->getSettingValue<bool>("slightlyMoreHelpfulOrbIndicatorsRESET");
 	if (slightlyMoreHelpfulOrbIndicatorsRESET && enabled) {
-		const std::string& resourcesDir = Mod::get()->getResourcesDir().string();
+		const std::string& resourcesDir = geode::utils::string::pathToString(Mod::get()->getResourcesDir());
 		auto directoryVector = std::vector<std::string>{ resourcesDir };
 		const auto texturePack = CCTexturePack {
 			.m_id = Mod::get()->getID(), // they're the same ID so it doesnt matter
@@ -129,7 +129,7 @@ $execute {
 		std::srand(static_cast<unsigned int>(std::time(nullptr)));
 		if ((1 + std::rand() % 1000) != 500) return ListenerResult::Propagate;
 
-		CCSprite* nwo5 = CCSprite::create(nwo5LogoPath.string().c_str());
+		CCSprite* nwo5 = CCSprite::create(geode::utils::string::pathToString(nwo5LogoPath).c_str());
 		if (!nwo5) return ListenerResult::Propagate;
 		nwo5->setID(nwo5SpriteID);
 		

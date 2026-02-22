@@ -1,5 +1,5 @@
 {
-	"geode": "5.0.0-beta.3",
+	"geode": "5.0.0-beta.4",
 	"gd": {
 		"win": "2.2081",
 		"mac": "2.2081",
@@ -8,7 +8,7 @@
 	},
 	"id": "raydeeux.orbindicatorsrevisited",
 	"name": "OrbIndicatorsRevisited",
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"developer": "RayDeeUx",
 	"description": "This was bound to happen sooner or later.",
 	"repository": "https://github.com/RayDeeUx/OrbIndicatorsRevisited",

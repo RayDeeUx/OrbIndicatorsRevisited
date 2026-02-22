@@ -1,5 +1,5 @@
 # OrbIndicatorsRevisited Changelog
-## v1.0.2
+## v1.0.2 and v1.0.3
 - Port to GD 2.2081.
 ## v1.0.1
 - Reset everyone's `Better Green Orb + Black Orb Indicators` toggles.
